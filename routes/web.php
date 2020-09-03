@@ -18,3 +18,5 @@ Route::get('home', function () {
 });
 
 Route::resource('movies', 'MovieController');
+
+Route::get('/movies-handlebars', 'MovieController@handlebars')->name('ApiMoviesHandlebars');

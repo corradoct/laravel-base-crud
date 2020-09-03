@@ -24,6 +24,7 @@
 
           <div class="links">
               <a href="{{ route('movies.index') }}">Movies</a>
+              <a href="{{ route('ApiMoviesHandlebars') }}">Api</a>
           </div>
       </div>
   </div>

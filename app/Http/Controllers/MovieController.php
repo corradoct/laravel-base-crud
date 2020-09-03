@@ -83,4 +83,8 @@ class MovieController extends Controller
     {
         //
     }
+
+    public function handlebars() {
+      return view('api.indexApi');
+  }
 }
