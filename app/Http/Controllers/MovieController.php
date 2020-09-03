@@ -25,7 +25,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view('movies.create');
     }
 
     /**
@@ -36,7 +36,18 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->getValidationRules());
+
+        $data = $request->all();
+        $newMovie = new Movie;
+        $newMovie->fill($data);
+        $saved = $newMovie->save();
+
+        if ($saved) {
+          $savedMovie = Movie::orderBy('id', 'desc')->first();
+          return redirect()->route('movies.show', $savedMovie);
+        }
+
     }
 
     /**
@@ -87,4 +98,14 @@ class MovieController extends Controller
     public function handlebars() {
       return view('api.indexApi');
   }
+
+  protected function getValidationRules() {
+      return [
+        'title' => 'required|max:255',
+        'genre' => 'required|max:255',
+        'description' => 'required',
+        'year' => 'required|integer|min:1895|max:2020',
+        'rating' => 'required|integer|min:1|max:10',
+      ];
+    }
 }

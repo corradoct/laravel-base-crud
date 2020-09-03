@@ -13,5 +13,6 @@
   </ul>
 
   <a href="home">Home</a>
+  <a href="{{ route('movies.create') }}">Aggiungi un film</a>
 
 @endsection
